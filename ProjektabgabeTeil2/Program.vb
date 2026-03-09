@@ -216,3 +216,12 @@ Module Program
         Books(bookIndex).BorrowerId = ""
         Console.WriteLine("Book returned successfully.")
     End Sub
+
+    Function FindUserIndex(ByVal userId As String) As Integer
+        For i As Integer = 0 To Users.Length - 1
+            If Users(i).Id = userId Then
+                Return i
+            End If
+        Next
+        Return -1
+    End Function
