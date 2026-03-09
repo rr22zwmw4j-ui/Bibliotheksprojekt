@@ -131,3 +131,39 @@ Module Program
         Next
         Return result
     End Function
+
+    Sub ShowUsers()
+        For i As Integer = 0 To Users.Length - 1
+            Console.WriteLine(Users(i).Id & "," & Users(i).Name)
+        Next
+    End Sub
+    Sub ShowBooks()
+        For i As Integer = 0 To Books.Length - 1
+            If Books(i).Status = "available" Then
+                Console.WriteLine(Books(i).Isbn & "," & Books(i).Title & "," & Books(i).Author & ",available")
+            Else
+                Console.WriteLine(Books(i).Isbn & "," & Books(i).Title & "," & Books(i).Author & ",lend to " & Books(i).BorrowerId)
+            End If
+        Next
+    End Sub
+    Sub AddUser()
+        Console.Write("First name: ")
+        Dim first As String = Console.ReadLine().Trim()
+        Console.Write("Last name: ")
+        Dim last As String = Console.ReadLine().Trim()
+        Dim maxNum As Integer = 0
+        For i As Integer = 0 To Users.Length - 1
+            Dim id As String = Users(i).Id
+            If id.StartsWith("U") Then
+                Dim n As Integer
+                If Integer.TryParse(id.Substring(1), n) Then
+                    If n > maxNum Then maxNum = n
+                End If
+            End If
+        Next
+        Dim newId As String = "U" & (maxNum + 1).ToString("D3")
+        ReDim Preserve Users(Users.Length)
+        Users(Users.Length - 1).Id = newId
+        Users(Users.Length - 1).Name = first & " " & last
+        Console.WriteLine("Added: " & newId)
+    End Sub
