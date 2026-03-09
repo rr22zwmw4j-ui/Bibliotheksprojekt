@@ -103,4 +103,31 @@ Module Program
             If selection <> 7 Then Pause()
         Loop While selection <> 7
     End Sub
-     
+
+    Function ParseUsers(ByVal raw As String) As UserRecord()
+        Dim parts() As String = raw.Split("|"c, StringSplitOptions.RemoveEmptyEntries)
+        Dim result(parts.Length - 1) As UserRecord
+        For i As Integer = 0 To parts.Length - 1
+            Dim fields() As String = parts(i).Split(","c)
+            If fields.Length >= 2 Then
+                result(i).Id = fields(0).Trim()
+                result(i).Name = fields(1).Trim()
+            End If
+        Next
+        Return result
+    End Function
+    Function ParseBooks(ByVal raw As String) As BookRecord()
+        Dim parts() As String = raw.Split("|"c, StringSplitOptions.RemoveEmptyEntries)
+        Dim result(parts.Length - 1) As BookRecord
+        For i As Integer = 0 To parts.Length - 1
+            Dim fields() As String = parts(i).Split(","c)
+            If fields.Length >= 4 Then
+                result(i).Isbn = fields(0).Trim()
+                result(i).Title = fields(1).Trim()
+                result(i).Author = fields(2).Trim()
+                result(i).Status = fields(3).Trim()
+                result(i).BorrowerId = ""
+            End If
+        Next
+        Return result
+    End Function
