@@ -167,3 +167,52 @@ Module Program
         Users(Users.Length - 1).Name = first & " " & last
         Console.WriteLine("Added: " & newId)
     End Sub
+
+    Sub BorrowBook()
+        Console.Write("ISBN: ")
+        Dim isbn As String = Console.ReadLine().Trim()
+        Console.Write("User ID: ")
+        Dim userId As String = Console.ReadLine().Trim()
+        Dim userIndex As Integer = FindUserIndex(userId)
+        If userIndex = -1 Then
+            Console.WriteLine("User not found.")
+            Return
+        End If
+        Dim bookIndex As Integer = FindBookIndex(isbn)
+        If bookIndex = -1 Then
+            Console.WriteLine("Book not found.")
+            Return
+        End If
+        If Books(bookIndex).Status <> "available" Then
+            Console.WriteLine("Book not available.")
+            Return
+        End If
+        Books(bookIndex).Status = "lend"
+        Books(bookIndex).BorrowerId = userId
+        Console.WriteLine("Book borrowed successfully.")
+    End Sub
+    Sub ShowBorrowedBooks()
+        Console.Write("User ID: ")
+        Dim userId As String = Console.ReadLine().Trim()
+        For i As Integer = 0 To Books.Length - 1
+            If Books(i).BorrowerId = userId Then
+                Console.WriteLine(Books(i).Title)
+            End If
+        Next
+    End Sub
+    Sub GiveBack()
+        Console.Write("ISBN: ")
+        Dim isbn As String = Console.ReadLine().Trim()
+        Dim bookIndex As Integer = FindBookIndex(isbn)
+        If bookIndex = -1 Then
+            Console.WriteLine("Book not found.")
+            Return
+        End If
+        If Books(bookIndex).Status <> "lend" Then
+            Console.WriteLine("This book is not borrowed.")
+            Return
+        End If
+        Books(bookIndex).Status = "available"
+        Books(bookIndex).BorrowerId = ""
+        Console.WriteLine("Book returned successfully.")
+    End Sub
