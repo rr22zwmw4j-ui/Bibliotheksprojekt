@@ -203,3 +203,35 @@ Module Program
         Console.WriteLine("Buch nicht gefunden.")
 
     End Sub
+
+    ' BUCH ZURÜCKGEBEN
+    Sub BuchZurueckgeben()
+
+        Console.Write("Benutzer-ID: ")
+        Dim userId As Integer = Convert.ToInt32(Console.ReadLine())
+
+        Console.Write("Buch-ID: ")
+        Dim buchId As Integer = Convert.ToInt32(Console.ReadLine())
+
+        For i As Integer = 0 To buecherListe.Count - 1
+
+            If buecherListe(i).Id = buchId Then
+
+                If buecherListe(i).AusgeliehenVon = userId Then
+                    buecherListe(i).Verfuegbar = True
+                    buecherListe(i).AusgeliehenVon = 0
+                    Console.WriteLine("Buch zurückgegeben.")
+                Else
+                    Console.WriteLine("Dieses Buch wurde nicht von diesem Benutzer ausgeliehen.")
+                End If
+
+                Return
+            End If
+
+        Next
+
+        Console.WriteLine("Buch nicht gefunden.")
+
+    End Sub
+
+End Module
