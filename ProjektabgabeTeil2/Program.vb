@@ -62,4 +62,45 @@ Module Program
     Dim Users() As UserRecord
     Dim Books() As BookRecord
 
-        
+    Sub Main()
+        Users = ParseUsers(userRaw)
+        Books = ParseBooks(libraryRaw)
+        Dim selection As Integer
+        Do
+            Console.Clear()
+            Console.WriteLine("Please choose one of the options")
+            Console.WriteLine("(1) New user")
+            Console.WriteLine("(2) Book variety")
+            Console.WriteLine("(3) All Users")
+            Console.WriteLine("(4) Borrow a book (ISBN)")
+            Console.WriteLine("(5) Show borrowed books (User ID)")
+            Console.WriteLine("(6) Give Back (ISBN)")
+            Console.WriteLine("(7) Close")
+            Console.Write("Input: ")
+            Dim input As String = Console.ReadLine()
+            If Not Integer.TryParse(input, selection) Then
+                Console.WriteLine("Invalid input.")
+                Pause()
+                Continue Do
+            End If
+            Select Case selection
+                Case 1
+                    AddUser()
+                Case 2
+                    ShowBooks()
+                Case 3
+                    ShowUsers()
+                Case 4
+                    BorrowBook()
+                Case 5
+                    ShowBorrowedBooks()
+                Case 6
+                    GiveBack()
+                Case 7
+                    Console.WriteLine("Goodbye!")
+                    Exit Sub
+            End Select
+            If selection <> 7 Then Pause()
+        Loop While selection <> 7
+    End Sub
+     
