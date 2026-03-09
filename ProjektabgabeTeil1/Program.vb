@@ -161,3 +161,15 @@ Module Program
         Next
 
     End Sub
+
+    '  ALLE BENUTZER ANZEIGEN
+    Sub AlleBenutzer()
+
+        For i As Integer = 0 To benutzerListe.Count - 1
+
+            Console.WriteLine("ID: " & benutzerListe(i).Id &
+                              " | Name: " & benutzerListe(i).Name)
+
+        Next
+
+    End Sub
