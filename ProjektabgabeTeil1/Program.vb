@@ -63,3 +63,51 @@ Module Program
 
     End Sub
 
+    ' MENÜ
+    Sub Menu()
+
+        Dim auswahl As Integer = -1
+
+        Do
+            Console.WriteLine("1 - Buch hinzufügen")
+            Console.WriteLine("2 - Benutzer hinzufügen")
+            Console.WriteLine("3 - Alle Bücher anzeigen")
+            Console.WriteLine("4 - Alle Benutzer anzeigen")
+            Console.WriteLine("5 - Buch ausleihen")
+            Console.WriteLine("6 - Buch zurückgeben")
+            Console.WriteLine("0 - Beenden")
+
+            Dim eingabe As String = Console.ReadLine()
+
+            If IsNumeric(eingabe) Then
+                auswahl = Convert.ToInt32(eingabe)
+            Else
+                auswahl = -1
+            End If
+
+            Console.WriteLine()
+
+            If auswahl = 1 Then
+                BuchHinzufuegen()
+            ElseIf auswahl = 2 Then
+                BenutzerHinzufuegen()
+            ElseIf auswahl = 3 Then
+                AlleBuecher()
+            ElseIf auswahl = 4 Then
+                AlleBenutzer()
+            ElseIf auswahl = 5 Then
+                BuchAusleihen()
+            ElseIf auswahl = 6 Then
+                BuchZurueckgeben()
+            ElseIf auswahl = 0 Then
+                Console.WriteLine("Programm beendet.")
+            Else
+                Console.WriteLine("Ungültige Eingabe.")
+            End If
+
+            Console.WriteLine()
+
+        Loop While auswahl <> 0
+
+    End Sub
+
