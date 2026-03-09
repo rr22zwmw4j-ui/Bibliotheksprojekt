@@ -39,3 +39,27 @@ Module Program
         LadeTestdaten()
         Menu()
     End Sub
+
+    ' TESTDATEN
+    Sub LadeTestdaten()
+
+        buecherListe.Add(New Buch(1, "Informatik 1", "Müller"))
+        buecherListe.Add(New Buch(2, "VB.NET Grundlagen", "Schmidt"))
+        buecherListe.Add(New Buch(3, "Datenstrukturen", "Klein"))
+        buecherListe.Add(New Buch(4, "Softwaretechnik", "Meier"))
+        buecherListe.Add(New Buch(5, "Algorithmen einfach erklärt", "Fischer"))
+        buecherListe.Add(New Buch(6, "Rechnerarchitektur", "Weber"))
+        buecherListe.Add(New Buch(7, "Betriebssysteme", "Hartmann"))
+        buecherListe.Add(New Buch(8, "Netzwerktechnik", "Schulz"))
+
+        benutzerListe.Add(New Benutzer(1, "Max Mustermann"))
+        benutzerListe.Add(New Benutzer(2, "Erika Musterfrau"))
+        benutzerListe.Add(New Benutzer(3, "Hans Meier"))
+        benutzerListe.Add(New Benutzer(4, "Laura Schmidt"))
+        benutzerListe.Add(New Benutzer(5, "Tim Becker"))
+        benutzerListe.Add(New Benutzer(6, "Sophie Wagner"))
+        benutzerListe.Add(New Benutzer(7, "Lukas Hoffmann"))
+        benutzerListe.Add(New Benutzer(8, "Anna Koch"))
+
+    End Sub
+
