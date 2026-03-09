@@ -126,3 +126,16 @@ Module Program
         buecherListe.Add(New Buch(id, titel, autor))
 
     End Sub
+
+    ' BENUTZER HINZUFÜGEN
+    Sub BenutzerHinzufuegen()
+
+        Console.Write("ID: ")
+        Dim id As Integer = Convert.ToInt32(Console.ReadLine())
+
+        Console.Write("Name: ")
+        Dim name As String = Console.ReadLine()
+
+        benutzerListe.Add(New Benutzer(id, name))
+
+    End Sub
