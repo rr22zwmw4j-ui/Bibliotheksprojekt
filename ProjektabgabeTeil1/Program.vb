@@ -139,3 +139,25 @@ Module Program
         benutzerListe.Add(New Benutzer(id, name))
 
     End Sub
+
+    ' ALLE BÜCHER ANZEIGEN
+    Sub AlleBuecher()
+
+        For i As Integer = 0 To buecherListe.Count - 1
+
+            Dim status As String
+
+            If buecherListe(i).Verfuegbar Then
+                status = "Verfügbar"
+            Else
+                status = "Ausgeliehen von Benutzer " & buecherListe(i).AusgeliehenVon
+            End If
+
+            Console.WriteLine("ID: " & buecherListe(i).Id &
+                              " | Titel: " & buecherListe(i).Titel &
+                              " | Autor: " & buecherListe(i).Autor &
+                              " | Status: " & status)
+
+        Next
+
+    End Sub
