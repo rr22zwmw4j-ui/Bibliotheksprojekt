@@ -1,9 +1,7 @@
 Imports System
 Imports System.Collections.Generic
 
-' ==============================
 ' KLASSE BUCH
-' ==============================
 Public Class Buch
     Public Property Id As Integer
     Public Property Titel As String
@@ -20,9 +18,7 @@ Public Class Buch
     End Sub
 End Class
 
-' ==============================
 ' KLASSE BENUTZER
-' ==============================
 Public Class Benutzer
     Public Property Id As Integer
     Public Property Name As String
@@ -32,3 +28,14 @@ Public Class Benutzer
         Me.Name = name
     End Sub
 End Class
+
+' HAUPTPROGRAMM
+Module Program
+
+    Dim buecherListe As New List(Of Buch)
+    Dim benutzerListe As New List(Of Benutzer)
+
+    Sub Main()
+        LadeTestdaten()
+        Menu()
+    End Sub
