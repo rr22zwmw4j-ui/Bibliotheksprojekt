@@ -225,3 +225,12 @@ Module Program
         Next
         Return -1
     End Function
+
+    Function FindBookIndex(ByVal isbn As String) As Integer
+        For i As Integer = 0 To Books.Length - 1
+            If Books(i).Isbn = isbn Then
+                Return i
+            End If
+        Next
+        Return -1
+    End Function
