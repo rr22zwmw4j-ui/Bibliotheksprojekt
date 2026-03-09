@@ -111,3 +111,18 @@ Module Program
 
     End Sub
 
+    ' BUCH HINZUFÜGEN
+    Sub BuchHinzufuegen()
+
+        Console.Write("ID: ")
+        Dim id As Integer = Convert.ToInt32(Console.ReadLine())
+
+        Console.Write("Titel: ")
+        Dim titel As String = Console.ReadLine()
+
+        Console.Write("Autor: ")
+        Dim autor As String = Console.ReadLine()
+
+        buecherListe.Add(New Buch(id, titel, autor))
+
+    End Sub
